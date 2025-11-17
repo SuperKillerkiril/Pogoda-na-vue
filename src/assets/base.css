@@ -1,0 +1,33 @@
+:root {
+  --c-white: #ffffff;
+  --c-black: #000000;
+  --c-lite-black: #191919;
+  --c--grey: #8d8d92;
+}
+:root {
+  --color-background: var(--vt-c-white);
+}
+@font-face {
+    font-family: SF Pro Display;
+    src: url('../assets/fonts/SF-Pro-Display-Regular.otf');
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--c-black);
+    --color-text: var(--c-white);
+  }
+}
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:SF Pro Display;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
