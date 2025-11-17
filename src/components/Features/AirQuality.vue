@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center
-                w-full max-w-md mx-auto
+                w-full  mx-auto
                 p-4 mt-5 rounded-xl bg-gray-700/25
                 border-1 border-gray-500/50">
         <div class="flex gap-2">
@@ -9,19 +9,19 @@
                 AIR QUALITY
             </h2>
         </div>
-            <h3 class="text-2xl pt-3 mx-3 w-full max-w-sm">
+            <h3 class="text-2xl pt-3 mx-3 w-full ">
                 {{ quality }} - {{ qualityLabel }}
             </h3>
-            <span class="text-lg font-light m-3 w-full max-w-sm">
+            <span class="text-lg font-light m-3 w-full ">
                 {{ advice }}
             </span>
             <div>
                 
             </div>
             <hr class="border border-gray-500
-                    m-3 w-full max-w-sm">
+                    m-3 w-full ">
             <button class="text-left text-lg
-                    m-3 w-full max-w-sm
+                    m-3 w-full 
                     flex justify-between items-center">
                 See More 
                 <img class="size-4" src="@/assets/icons/ch.svg" />

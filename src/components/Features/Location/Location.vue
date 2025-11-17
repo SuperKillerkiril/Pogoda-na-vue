@@ -1,5 +1,5 @@
 <template>
-<div class="w-full max-w-md mx-auto
+<div class="w-full max-w-4xl mx-auto
             mt-7 p-4 rounded-xl bg-gray-700/25
             border-1 border-gray-500/50">
 

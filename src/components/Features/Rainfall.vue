@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col justify-between
-                    w-full max-w-md mx-auto
+                    w-full  mx-auto
                     p-4 mt-5 rounded-xl bg-gray-700/25
                     border-1 border-gray-500/50">
 
@@ -11,7 +11,7 @@
             </h2>
         </div>
         <div class="flex flex-col justify-between
-                        w-full max-w-md mx-auto
+                        w-full  mx-auto
                         h-full max-h-lg">
             <h2 class="text-4xl">{{ pastRain }} мм </h2>
             <p class="text-2xl">за посл. 24ч</p>
@@ -55,15 +55,15 @@
             `https://api.weather.yandex.ru/v2/forecast?lat=${lat}&lon=${lon}&hours=true&limit=5`,{headers: {'X-Yandex-Weather-Key': accessKey}}
         );
         const data = await response.json();
-        console.log(`В Осадках по координатам: ${lat}, ${lon} и городу:`, props.city)
-
+        console.log(`В Осадках: lat:${lat}, lon:${lon} и городу:`, props.city)
+        // console.log(data.forecasts[0].hours[0].prec_mm) оно реально 0 почти всегда, все работает
         const nowHour = new Date().getHours();
         pastRain.value = data.forecasts[0].hours
             .filter(h => parseInt(h.hour) < nowHour)
-            .reduce((sum, h) => sum + (h.prec_mm || 0), 0);
+            .reduce((sum, h) => sum + (h.prec_mm || 0), 0).toFixed(1);
 
         futureRain.value = data.forecasts[0].hours
             .filter(h => parseInt(h.hour) >= nowHour)
-            .reduce((sum, h) => sum + (h.prec_mm || 0), 0);
+            .reduce((sum, h) => sum + (h.prec_mm || 0), 0).toFixed(1);
     });
 </script>

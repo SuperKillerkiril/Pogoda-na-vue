@@ -5,8 +5,8 @@
             :style="backgroundStyle"
         >
                 <div class="bg-fixed bg-gradient-to-t from-[#2b3142] via-[#2b3142] to-[#2b3142]/50 
-                            pointer-events-none">
-                    <div>
+                            pointer-events-none flex justify-center">
+                    <div class="max-w-4xl">
                         <Header class="w-full"
                             :class="scrolled? 'scale-95 opacity-100':'scale-100 opacity-100'"
                             :city="city"
@@ -26,7 +26,7 @@
                                 :condition="forecast.fact.condition"
                                 />
                             </section>  
-                            <section class="grid grid-cols-2 sm:grid-cols-1 gap-4">
+                            <section class="grid grid-cols-2 gap-4 ">
                                 <WindCompass v-if="forecast?.fact"
                                 :windSpeed="forecast.fact.wind_speed"
                                 :windDir="forecast.fact.wind_dir"                        
@@ -157,7 +157,7 @@
                 }
                 if(lat && lon){
                     weatherStore.fetchForecast(lat, lon)
-                    console.log(`Ищем в главном ком-те по координатам: ${lon}, ${lat} и городу:`, city)
+                    console.log(`В главном: ${lat}, ${lon} и городу:`, city)
                 }else{
                     console.warm('В куки нет координат по дефолту Москва')
                 }

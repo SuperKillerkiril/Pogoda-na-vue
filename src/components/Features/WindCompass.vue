@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center justify-between
-                w-full max-w-md mx-auto 
+                w-full mx-auto 
                 mt-7 p-4 rounded-xl bg-gray-700/25
                 border-1 border-gray-500/50">
         <div class="flex gap-2">

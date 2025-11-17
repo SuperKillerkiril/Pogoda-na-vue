@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center
-                w-full max-w-md mx-auto
+                w-full mx-auto
                 p-4 mt-5 rounded-xl bg-gray-700/25
                 border-1 border-gray-500/50">
         <div class="flex gap-2">
@@ -15,7 +15,7 @@
             v-else-if="forecast"
                 v-for="(day, index) in forecast.forecasts"
                 :key="day.date"
-                class="w-full max-w-md mx-auto"
+                class="w-full mx-auto"
             >
                 <hr class="border border-gray-500 m-3">
                 <div class="flex justify-between px-3 text-xl items-center">

@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-center
-                w-full max-w-md mx-auto
+                w-full  mx-auto
                 p-4 mt-7 rounded-xl bg-gray-700/25
                 border-1 border-gray-500/50">
 
@@ -8,8 +8,8 @@
             {{ condition }}
         </h2>
         <hr class="border border-gray-500
-                    m-3 w-full max-w-sm">
-        <div class="flex justify-between m-3 w-full max-w-sm">
+                    m-3 w-full ">
+        <div class="flex justify-between m-3 w-full ">
             <div
                 v-for="(hour, index) in hoursData"
                 :key="index"
