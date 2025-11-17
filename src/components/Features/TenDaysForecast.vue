@@ -77,6 +77,7 @@
         }else{
             console.warn('В куки нет координат по дефолту Москва')
         }
+        console.log(`10-дней: lat:${lat}, lon:${lon} и городу:`, props.city)
     })
 
     const getDayName = (day) => {

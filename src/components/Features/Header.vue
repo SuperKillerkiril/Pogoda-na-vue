@@ -68,7 +68,7 @@
             }
             if(lat && lon){
                 weatherStore.fetchForecast(lat, lon)
-                console.log(`Ищем в Хедере по координатам: lat:${lat}, lon:${lon} и городу:`, props.city)
+                console.log(`Хедер: lat:${lat}, lon:${lon} и городу:`, props.city)
             }else{
                 console.warm('В куки нет координат по дефолту Москва')
             }

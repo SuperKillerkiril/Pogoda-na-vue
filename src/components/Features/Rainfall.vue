@@ -22,7 +22,7 @@
 </template>
 <script setup>
     import {ref, onMounted} from "vue";
-    import axios from "axios";
+    import Cookie from "js-cookie";
     import { getCoordsByCity } from "@/services/geoService";
 
     const props = defineProps({
@@ -32,25 +32,38 @@
     const pastRain = ref(0);
     const futureRain = ref(0);
 
-    const API_KEY = "2373d829-76b3-4180-b6ae-9c8217ec49a5";
-    const WEATHER_URL = "https://api.weather.yandex.ru/v2/forecast";
-
     onMounted(async () => {
-        
-    const coords = await getCoordsByCity(props.city);
-    const { data } = await axios.get(WEATHER_URL, {
-        params: { lat: coords.lat, lon: coords.lon, hours: true, limit: 2 },
-        headers: { "X-Yandex-Weather-Key": API_KEY }
-    });
-    console.log(`В Осадках по координатам: ${coords.lat}, ${coords.lon} и городу:`, props.city)
+        let lat, lon;
 
-    const nowHour = new Date().getHours();
-    pastRain.value = data.forecasts[0].hours
-        .filter(h => parseInt(h.hour) < nowHour)
-        .reduce((sum, h) => sum + (h.prec_mm || 0), 0);
+        const savedLocation = Cookie.get("userLocation");
+        if (props.city === "My Location" && savedLocation){
+            const [latitude, longitude] = savedLocation.split(",");
+            lat = latitude;
+            lon = longitude;
+        }else{
+        const coords = await getCoordsByCity(props.city);
+            if(coords){
+                lat = coords.lat
+                lon = coords.lon
+            } else{
+                lat = 55.75;
+                lon = 37.61;
+            }
+        }
+        const accessKey = '2373d829-76b3-4180-b6ae-9c8217ec49a5';
+        const response = await fetch(
+            `https://api.weather.yandex.ru/v2/forecast?lat=${lat}&lon=${lon}&hours=true&limit=5`,{headers: {'X-Yandex-Weather-Key': accessKey}}
+        );
+        const data = await response.json();
+        console.log(`В Осадках по координатам: ${lat}, ${lon} и городу:`, props.city)
 
-    futureRain.value = data.forecasts[0].hours
-        .filter(h => parseInt(h.hour) >= nowHour)
-        .reduce((sum, h) => sum + (h.prec_mm || 0), 0);
+        const nowHour = new Date().getHours();
+        pastRain.value = data.forecasts[0].hours
+            .filter(h => parseInt(h.hour) < nowHour)
+            .reduce((sum, h) => sum + (h.prec_mm || 0), 0);
+
+        futureRain.value = data.forecasts[0].hours
+            .filter(h => parseInt(h.hour) >= nowHour)
+            .reduce((sum, h) => sum + (h.prec_mm || 0), 0);
     });
 </script>

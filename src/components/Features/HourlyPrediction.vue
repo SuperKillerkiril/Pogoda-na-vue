@@ -76,7 +76,6 @@
                     const hourNum = parseInt(h.hour, 10);
                     const suffix = hourNum >= 12 ? "PM" : "AM";
                     const displayHour = hourNum % 12 || 12;
-
                     return {
                         label: i === 0 ? "NOW" : `${displayHour} ${suffix}`,
                         temp: h.temp,
@@ -86,7 +85,8 @@
                     });
                     condition.value = nowCondition;
                     hoursData.value = result;
-                    // console.log(hoursData);
+
+                    console.log(`6ч: lat:${lat}, lon:${lon} и городу:`, props.city)
                 }
 
                 onMounted(fetchWeather);
