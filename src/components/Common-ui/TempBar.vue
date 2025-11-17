@@ -29,8 +29,15 @@ const indicatorPosition = computed(() => {
     return 50; 
   }
   if (props.mode === "air") {
-    const clamped = Math.min(Math.max(props.value, 0), 500);
-    return (clamped / 500) * 100;
+    if (props.value === 100) {
+      return 0;
+    }
+    if(props.value === 0){
+      return 100;
+    }
+    else{
+      return 50;
+    }
   }
   return 50;
 });

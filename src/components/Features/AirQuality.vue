@@ -12,6 +12,7 @@
             <h3 class="text-2xl pt-3 mx-3 w-full ">
                 {{ quality }} - {{ qualityLabel }}
             </h3>
+            <temp-bar class="my-4 w-full" mode="air" :value="parseInt(quality)" :min="0" :max="100"/>
             <span class="text-lg font-light m-3 w-full ">
                 {{ advice }}
             </span>
@@ -30,6 +31,7 @@
 </template>
 
 <script setup>
+import TempBar from "@/components/Common-ui/TempBar.vue";
 import { computed } from "vue";
 
     const props = defineProps({
@@ -57,4 +59,5 @@ import { computed } from "vue";
             return "Качество воздуха среднее, чувствительные люди могут ощущать лёгкий дискомфорт.";
         return "Воздух тяжёлый, лучше сократить время на улице и проветривать помещение.";
     });
+    
 </script>

@@ -6,7 +6,7 @@
         >
                 <div class="bg-fixed bg-gradient-to-t from-[#2b3142] via-[#2b3142] to-[#2b3142]/50 
                             pointer-events-none flex justify-center">
-                    <div class="max-w-4xl">
+                    <div class="max-w-4xl mb-16">
                         <Header class="w-full"
                             :class="scrolled? 'scale-95 opacity-100':'scale-100 opacity-100'"
                             :city="city"
